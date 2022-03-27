@@ -32,7 +32,7 @@ public record PacienteEstudio(String id, String genero, Double edad, Boolean hip
 	@Override
 	public String toString() {
 		return "PacienteEstudio [id=" + id + ", edad=" + edad + "]";
-		//		return "Medicamento [nombreMedicamento=" + nombreMedicamento + ", farmaceutica=" + farmaceutica + "]";
+		
 
 	}
 
