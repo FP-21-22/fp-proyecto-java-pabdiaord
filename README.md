@@ -12,21 +12,49 @@ Autor/a: Pablo Diaz Ordoñez   uvus:pabdiaord
   	* **\<fp.farmaceutico\>**: Paquete que contiene los tipos Medicamento y FactoriaMedicamento (clases) y el enumerado TipoMedicamento.
 	* **\<fp.vacunas\>**: Paquete que contiene el tipo Vacunacion (clase).
   	* **\<fp.utiles\>**:  Paquete que contiene las clases de utilidad. 
-* **/data**: Contiene el dataset o datasets del proyecto
-    * **\<dataset1.csv\>**: Añade una descripción genérica del dataset.
-    * **\<dataset2.csv\>**: Añade una descripción del resto de datasets que puedas tener.
+* **/data**: Contiene los datasets del proyecto
+    * **\<estudio_clinico.csv\>**: contiene la información sobre objetos del tipo PacienteEstudio.
+    * **\<medicamentos.csv\>**: contiene la información sobre objetos del tipo Medicamento.
+	* **\<ccaa_vacunas_3.csv\>**: contiene la información sobre objetos del tipo Vacunacion.
 * **/doc**: Contiene el documento o documentos de información de cómo realizar el proyecto.
-	* **Proyecto de laboratorio de Java_SUBGRUPO_IS2_3.pdf**: Añade la descripción de realización de la entrega 1.
+	* **Proyecto de laboratorio de Java_SUBGRUPO_IS2_3.pdf**: Añade la descripción de realización de la entrega 1 y 2.
     
 ## Estructura del *dataset*
 
-Aquí debes describir la estructura del dataset explicando qué representan los datos que contiene y la descripción de cada una de las columnas. Incluye también la URL del dataset original.
 
-El dataset está compuesto por \<N\> columnas, con la siguiente descripción:
+El dataset **estudio_clinico.csv** está compuesto por 7 columnas, con la siguiente descripción:
+		
+* **id**: de tipo String, representa el id del paciente.
+* **genero**: de tipo String, representa el genero del paciente.
+* **edad**: de tipo Double, representa la edad del paciente.
+* **hipertension**: de tipo Boolean, representa si es hipertenso el paciente.
+* **enfermedadCorazon**: de tipo Boolean, representa si el paciente padece del corazón.
+* **tipoResidencia**: de tipo TipoResidencia, representa el tipo de residencia del paciente.
+* **nivelMedioGlucosa**: de tipo Double, representa nivel medio de glucosa del paciente.
 
-* **\<columna 1>**: de tipo \<tipo\>, representa....
-* **\<columna 2>**: de tipo \<tipo\>, representa....
-....
+
+El dataset **medicamentos.csv** está compuesto por 7 columnas, con la siguiente descripción:
+	
+* **Nombre_medicamento**: de tipo String, representa el nombre del medicamento.
+* **Tipo_medicamento**: de tipo TipoMedicamento, representa el tipo del medicamento (ANATOMICO, QUIMICO, TERAPEUTICO).
+* **Codigo_enfermedad**: de tipo String, representa el codigo al que se asocia la enfermedad.
+* **Farmaceutica**: de tipo String, representa la farmaceutica a la que pertenece el medicamento.
+* **Puntuacion**: de tipo Double, representa la puntuacion del medicamento.
+* **Indice_somatico**: de tipo Integer, representa indice somatico.
+* **Fecha_catalogo**: de tipo LocalDate, representa la fecha del catalogo de medicamento.
+
+
+El dataset **ccaa_vacunas_3.csv** está compuesto por 7 columnas, con la siguiente descripción:
+	
+* **fecha_publicacion**: de tipo LocalDate, representa la fecha de vacunacion.
+* **CCAA**: de tipo String, representa la comunidad autónoma donde se vacunó.
+* **Pfizer**: de tipo Integer, representa el numero de vacunas Pfizer.
+* **Moderna**: de tipo Integer, representa el numero de vacunas Moderna.
+* **AstraZeneca**: de tipo Integer, representa el numero de vacunas AstraZeneca.
+* **Janssen**: de tipo Integer, representa el numero de vacunas Janssen.
+* **Personas_pauta_completa**: de tipo Integer, representa el numero de personas con pauta completa de ese dia.
+
+
 
 ## Tipos implementados
 
@@ -217,14 +245,44 @@ Implementado con una clase en fp.farmaceutico.
 
 #### Tipos auxiliares
 Descripción de los tipos auxiliares que sean necesarios añadir al proyecto.
-- Se ha creado una clase de nombre TestFactoriaMedicamentos en un paquete de nombre fp.farmaceutico.test
-para comprobar el funcionamiento del método parseaMedicamento entre otras cosas.
 
 ### FactoriaMedicamentos
-Descripción breve de la factoría.
 
 - 	parseaMedicamento: recibe una cadena con un formato específico y devuelve un objeto de tipo Medicamento.
 -	tipo: Dada una cadena, realiza el parseo de esa cadena al tipo correspondiente del enumerado TipoMedicamento.
+-	leeFichero: Dada la cadena del nombre del fichero, devuelve una lista de objetos Medicamento.
+
+### FactoriaVacunaciones
+
+- 	parsealinea: recibe una cadena con un formato específico y devuelve un objeto de tipo Vacunacion, parsea cada linea.
+-	leeFichero: Dada la cadena del nombre del fichero, devuelve una lista de objetos Vacunacion.
+
+### EstudioClinico (Interfaz)
+
+- 	parsealinea: recibe una cadena con un formato específico y devuelve un objeto de tipo Vacunacion, parsea cada linea.
+-	leeFichero: Dada la cadena del nombre del fichero, devuelve una lista de objetos Vacunacion.
+-	numeroPacientes: calcula el numero total de pacientes.
+-	incluyePaciente: añade un paciente.
+-	incluyePacientes: añade una colección de pacientes.
+-	eliminaPaciente: elimina un paciente.
+-	estaPaciente: averigua si el paciente dado esta en la coleccion.
+-	borraEstudio: borra la coleccion de pacientes.
+-	of: hace una llamada al leeFichero para crear objeto de PacienteEstudio.
+-	leeFichero: Dada la cadena del nombre del fichero, devuelve una lista de objetos PacienteEstudio.
+-	todosPacienteSonDelTipo: averigua si todos los pacientes son del tipo de residencia dado.
+-	existeAlgunPacienteDelTipo: averigua si existe algun paciente que es del tipo de residencia dado.
+-	numeroPacientesFactorRiesgo: calcula el numero de pacientes de riesgo.
+-	edadMediaPacientesConFactorRiesgo: calcula la edad media de esos pacientes que son de riesgo.
+-	filtraPacientesPorEdad: calcula la lista de pacientes que tienen la edad dada por parametro.
+-	agruparPacientesEdadMayorQuePorGenero: agrupa por genero aquellos pacientes que son mayores que la edad dada.
+-	numeroPacientesPorGenero: agrupa por genero el numero de pacientes que hay de cada genero.
+-	edadMediaPacientesPorPorGenero: agrupa por genero la edad media de los pacientes de ese genero.
+
+### EstudioClinicoBucles
+Implementa los metodos de la interfaz mediante bucles.
+
+### EstudioClinicoStream
+Implementa los metodos de la interfaz mediante stream.
 
 ### Tipo Contenedor
 
