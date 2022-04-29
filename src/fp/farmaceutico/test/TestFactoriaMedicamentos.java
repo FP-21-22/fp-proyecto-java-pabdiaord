@@ -1,10 +1,13 @@
 package fp.farmaceutico.test;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import fp.farmaceutico.FactoriaMedicamentos;
 import fp.farmaceutico.Medicamento;
 import fp.farmaceutico.TipoMedicamento;
+import fp.vacunas.FactoriaVacunaciones;
+import fp.vacunas.Vacunacion;
 
 public class TestFactoriaMedicamentos {
 
@@ -25,6 +28,11 @@ public class TestFactoriaMedicamentos {
 		 * pues no sale lo que deberia de salir, pero no consigo ver la causa de que salga null
 		 * Coinciden con llamadas al objeto creeado por la factoria
 		 */
+		String ruta = "data/medicamentos.csv";
+		List<Medicamento> lista = FactoriaMedicamentos.leeFichero(ruta);
+		for(Medicamento e:lista) {
+			System.out.println(e);
+		}
 
 		
 	}

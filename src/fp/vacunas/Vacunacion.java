@@ -11,7 +11,7 @@ public record Vacunacion(LocalDate fecha, String comunidad, Integer pfizer, Inte
 	
 	//redefinimos el constructor para las restricciones
 	public Vacunacion{
-		Checkers.check("fecha debe ser posterior al 01/02/2021", fecha.isAfter(LocalDate.of(2021, 02, 01)));
+		Checkers.check("fecha debe ser posterior al 01/01/2021", fecha.isAfter(LocalDate.of(2021, 01, 01)));
 	}
 	
 	

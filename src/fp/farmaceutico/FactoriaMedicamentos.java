@@ -1,7 +1,12 @@
 package fp.farmaceutico;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FactoriaMedicamentos {
 	public static Medicamento parseaMedicamento(String cadena) {
@@ -27,6 +32,28 @@ public class FactoriaMedicamentos {
 		}
 		else {
 			res=null;
+		}
+		return res;
+	}
+	
+	
+	
+	public static List<Medicamento> leeFichero(String nombreFichero){
+		List<Medicamento> res = new ArrayList<Medicamento>();
+		List<String> aux = null;
+		try {
+			aux = Files.readAllLines(Paths.get(nombreFichero));
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		//Hay que saltarse la primera linea
+		int cont=0;
+		for(String e:aux) {
+			if(cont>0) {
+				Medicamento m = parseaMedicamento(e);
+				res.add(m);
+			}
+			cont++;
 		}
 		return res;
 	}
