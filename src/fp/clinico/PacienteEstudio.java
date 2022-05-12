@@ -16,12 +16,9 @@ public record PacienteEstudio(String id, String genero, Double edad, Boolean hip
 	
 	//Metodos derivados
 	public Boolean factorDeRiesgo() {
-		Boolean res = null;
+		Boolean res = false;
 		if(this.hipertension == true && this.edad > 40) {
 			res = true;
-		}
-		else {
-			res = false;
 		}
 		return res;
 	}
@@ -77,10 +74,10 @@ public record PacienteEstudio(String id, String genero, Double edad, Boolean hip
 	//metodos de ayuda para parse
 	private static Boolean esBooleano(String cadena) {
 		Boolean res = null;
-		if(cadena=="true") {
+		if(cadena.equals("true")) {
 			res=true;
 		}
-		else if(cadena=="false") {
+		else if(cadena.equals("false")) {
 			res=false;
 		}else {
 			

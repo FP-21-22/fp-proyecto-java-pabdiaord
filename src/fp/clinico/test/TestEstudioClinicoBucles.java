@@ -42,7 +42,8 @@ public class TestEstudioClinicoBucles {
 		
 		System.out.println("\n #### edadMediaPacientesConFactorRiesgo() ####");
 		Double edadMediaRiesgo = b.edadMediaPacientesConFactorRiesgo();
-		System.out.println(String.format("La edad media de pacientes de riesgo es %d", edadMediaRiesgo));
+		System.out.println(String.format("La edad media de pacientes de riesgo es %f", edadMediaRiesgo));
+		//System.out.println("La edad media de pacientes de riesgo es " + edadMediaRiesgo);
 		
 		System.out.println("\n ####  filtraPacientesPorEdad(Double edad) ####");
 		List<PacienteEstudio> filtroPorEdad = b.filtraPacientesPorEdad(20.);
@@ -53,7 +54,7 @@ public class TestEstudioClinicoBucles {
 		System.out.println("\n ####  agruparPacientesEdadMayorQuePorGenero(Double edad) ####");
 		Map<String, List<PacienteEstudio>> pacientesMayorQueGenero = b.agruparPacientesEdadMayorQuePorGenero(30.);
 		for(String e:pacientesMayorQueGenero.keySet()) {
-			System.out.println(e + "-->"+ pacientesMayorQueGenero.get(e));
+			System.out.println(e + "-->"+ pacientesMayorQueGenero.get(e).size());
 		}
 		/*for(Map.Entry<String, List<PacienteEstudio>> e:pacientesMayorQueGenero.entrySet()) {
 			System.out.println(e.getKey()+"===>"+e.getValue());

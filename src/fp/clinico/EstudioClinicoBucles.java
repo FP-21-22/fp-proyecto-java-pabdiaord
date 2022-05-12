@@ -123,7 +123,7 @@ public class EstudioClinicoBucles implements EstudioClinico {
 
 	@Override
 	public Boolean existeAlgunPacienteDelTipo(TipoResidencia tipo) {
-		// Auto-generated method stub
+		System.out.println("->"+ this.pacientes.size()+"<-");
 		Boolean res = false;
 		for(PacienteEstudio p:this.pacientes) {
 			if(p.tipoResidencia()==tipo) {
@@ -136,7 +136,6 @@ public class EstudioClinicoBucles implements EstudioClinico {
 
 	@Override
 	public Integer numeroPacientesFactorRiesgo() {
-		// Auto-generated method stub
 		Integer res = 0;
 		for(PacienteEstudio p:this.pacientes) {
 			if(p.factorDeRiesgo().equals(true)) {
