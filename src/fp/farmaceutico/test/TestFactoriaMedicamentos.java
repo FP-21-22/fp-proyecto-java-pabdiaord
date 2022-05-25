@@ -23,11 +23,7 @@ public class TestFactoriaMedicamentos {
 		System.out.println(m1.getTipoMedicamento());
 		System.out.println(m1.tratarEnfermedad("Y22YE4"));
 		
-		/*
-		 * al ejecutar el main en m.getTipoMedicamento() y m.tratarEnfermedad("Y212XXA") debe de haber un pequeño error 
-		 * pues no sale lo que deberia de salir, pero no consigo ver la causa de que salga null
-		 * Coinciden con llamadas al objeto creeado por la factoria
-		 */
+		
 		String ruta = "data/medicamentos.csv";
 		List<Medicamento> lista = FactoriaMedicamentos.leeFichero(ruta);
 		for(Medicamento e:lista) {

@@ -7,6 +7,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
+
+import fp.vacunas.Vacunacion;
 
 public class FactoriaMedicamentos {
 	public static Medicamento parseaMedicamento(String cadena) {
@@ -22,16 +25,16 @@ public class FactoriaMedicamentos {
 	}
 	//metodo auxiliar para parse
 	private static TipoMedicamento tipo(String cadena) {
-		TipoMedicamento res;
-		if(cadena=="Anatómico") {
+		TipoMedicamento res = null;
+		if(cadena.equals("Anatomico")) {
 			res = TipoMedicamento.ANATOMICO;
-		}else if(cadena=="Químico") {
+		}else if(cadena.equals("Quimico")) {
 			res = TipoMedicamento.QUIMICO;
-		}else if(cadena=="Terapéutico") {
+		}else if(cadena.equals("Terapeutico")) {
 			res = TipoMedicamento.TERAPEUTICO;
 		}
 		else {
-			res=null;
+			
 		}
 		return res;
 	}
@@ -54,6 +57,16 @@ public class FactoriaMedicamentos {
 				res.add(m);
 			}
 			cont++;
+		}
+		return res;
+	}
+	
+	public static Stream<Medicamento> leerMedicamentos2(String fichero){
+		Stream<Medicamento> res = null;
+		try {
+			res = Files.lines(Paths.get(fichero)).skip(1).map(x->parseaMedicamento(x));
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		return res;
 	}

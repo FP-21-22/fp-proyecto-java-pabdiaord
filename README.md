@@ -284,33 +284,43 @@ Implementa los metodos de la interfaz mediante bucles.
 ### EstudioClinicoStream
 Implementa los metodos de la interfaz mediante stream.
 
-### Tipo Contenedor
+### Vacunaciones
 
-Descripción breve del tipo contenedor.
+Implementa los metodos de tratamientos secuenciales de Vacunacion.
 
 **Propiedades**:
 
-- _propiedad1_, de tipo \<Tipo1\>, consultable. 
-- _propiedad2_, de tipo \<Tipo2\>, consultable y modificable. 
-- ...
-- 
+- vacunaciones, de tipo List<Vacunacion> , consultable. 
+
 **Constructores**: 
 
-- C1: Descripción del constructor 1.
-- C2: Descripción del constructor 2.
-- ...
+- C1: recibe un Stream<Vacunacion> y devuelve el atributo con los objetos de dicho stream.
 
-**Restricciones**:
+**Operaciones**:
  
-- R1: Descripción de la restricción 1.
-- R2: Descripción de la restricción 2.
-- ...
-- 
-**Criterio de igualdad**: Describir el criterio de igualdad
+-	anyadeVacunacion:  dado un objeto del tipo Vacunacion lo añade al atributo de List<Vacunacion>.
+-	vacunacionesEntreFechas:  dadas dos fechas como parámetros de entrada, devuelve una lista con aquellas vacunaciones entre dichas fechas. 
+-	existeNumPersonasPautaCompletaPorEncimaDe:	dada una comunidad y un valor entero, indica si existen o no vacunaciones con un número de personas con la pauta completa de vacunación por encima del valor entero dado.
+-	diaMasVacunacionesEn:	dada una comunidad, devuelve la fecha en la que hubo más personas vacunadas. 
+-	vacunacionesPorFecha:	 devuelve un mapa, o diccionario, en el que las claves son las fechas y los valores son listas de vacunaciones asociadas a dichas fechas. 
+-	maximoNumTotalVacunasporComunidad:	devuelve un mapa, o diccionario, en el que las claves son las comunidades y los valores son el máximo para el número total de vacunas puestas para cada comunidad.
 
-**Criterio de ordenación**: Describir el criterio de ordenación (si lo hay).
+### ListadoMedicamentos
 
-**Otras operaciones**:
+Implementa los metodos de tratamientos secuenciales de Medicamento.
+
+**Propiedades**:
+
+- medicamentos, de tipo List<Medicamento> , consultable. 
+
+**Constructores**: 
+
+- C1: recibe un Stream<Medicamento> y devuelve el atributo con los objetos de dicho stream.
+
+**Operaciones**:
  
--	_método 1_: Descripción del método 1.
-- ...
+-	existeMedicamentoSegunTipoAnteriorA:   dado un tipo de medicamento y una fecha, indica si existe un medicamento de dicho tipo posterior a la fecha dada.
+-	nombreMedicamentosPuntuacionMayorA:   dada una puntuación, devuelve un conjunto con los nombres de los medicamentos con una puntuación mayor a la dada.
+-	nombreMedicamentoMayorIndiceSomaticoSegunTipoMedicamento:	  dado un tipo de medicamento, devuelve el nombre del medicamento con mayor índice somático. En caso de no haber ninguno, se eleva una excepción
+-	agrupaTipoMedicamentoSegunPuntuacionMedia:	 devuelve un diccionario que asocia a cada tipo de medicamento su puntuación media. 
+-	fechaCatalogoMasFrecuente:	devuelve la fecha del catálogo más frecuente, es decir, la que aparece más veces.

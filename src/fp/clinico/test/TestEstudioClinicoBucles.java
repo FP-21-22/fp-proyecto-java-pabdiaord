@@ -68,15 +68,7 @@ public class TestEstudioClinicoBucles {
 		Map<String, Double> edadMediaGenero = b.edadMediaPacientesPorPorGenero();
 		System.out.println(edadMediaGenero);
 		
-	/*
-	 * Como le comenté por correo hay dos funciones que me salta un error que le madé por captura de pantalla. No he 
-	 * conseguido arreglarlo y siguiendo lo que me dijo de verlo en clase y comentarselo en la entrega, le pongo este comentario.
-	 * Se trata de las funciones edadMediaPacientesConFactorRiesgo() y numeroPacientesFactorRiesgo() que al hacer el test
-	 * salta error. 
-	 * Tambien al ejecutar agruparPacientesEdadMayorQuePorGenero sale vacío y no encuentro el problema. Creía que era por el tamaño
-	 * horizontal de la consola, pero al imprimir los resultados con un bucle sigue sin salir.
-	 * Lo vemos en clase y si es con una tutoria también.
-	 */
+	
 	
 	
 	

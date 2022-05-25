@@ -7,6 +7,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
+
+
 
 public class FactoriaVacunaciones {
 	public static List<Vacunacion> leeFichero(String nombreFichero){
@@ -29,15 +32,21 @@ public class FactoriaVacunaciones {
 		return res;
 	}
 	
-	
+	public static Stream<Vacunacion> leerVacunaciones2(String fichero){
+		Stream<Vacunacion> res = null;
+		try {
+			res = Files.lines(Paths.get(fichero)).skip(1).map(x->parseaLinea(x));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
 	
 	
 	
 	private static Vacunacion parseaLinea(String cadena) {
-		//04/01/2021;Andalucía;140295;0;0;0;0
+		
 		String[] aux = cadena.split(";");
-		//LocalDate fecha, String comunidad, Integer pfizer, Integer moderna,
-		//Integer astrazeneca, Integer janssen, Integer numeroPersonas
 		LocalDate fecha = LocalDate.parse(aux[0].trim(), DateTimeFormatter.ofPattern("d/M/y"));
 		String comunidad = aux[1].trim();
 		Integer pfizer = Integer.parseInt(aux[2].trim());
